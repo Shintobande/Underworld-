@@ -1,0 +1,53 @@
+Video Outline: Combinators — Descendant, Child, Adjacent Sibling & General Sibling
+Topic: CSS Combinators & Selector Relationships
+Duration: Max 5 minutes
+Subject: Cascading Style Sheets (CSS)
+ 
+Introduction — 0:00–0:45
+Hook: CSS selectors don’t just target elements alone — they target elements based on their relationship to others
+What are Combinators? Symbols that describe the connection between selectors; let you style elements by their position in the HTML structure
+4 Types we’ll cover: Descendant, Child, Adjacent Sibling, General Sibling
+Goal: By the end, you’ll know exactly when & how to use each one
+Concept Explanation — 0:45–2:30
+A. Descendant Selector (space)
+Selects all matching elements inside a parent — at any depth
+Syntax:  parent child { } 
+Example:  div p { }  → all  
+  inside any  
+ 
+B. Child Selector ( > )
+Selects only direct children — one level down
+Syntax:  parent > child { } 
+Example:  div > p { }  → only  
+  directly inside  
+ ; not nested deeper
+C. Adjacent Sibling Selector ( + )
+Selects the immediately following sibling — same parent, right next
+Syntax:  element + sibling { } 
+Example:  h2 + p { }  → only the first  
+  right after  
+ 
+D. General Sibling Selector ( ~ )
+Selects all matching siblings that come after — same parent, anywhere below
+Syntax:  element ~ sibling { } 
+Example:  h2 ~ p { }  → every  
+  that follows  
+  under the same parent
+Live Code Walkthrough — 2:30–4:15
+Show simple HTML structure with parent, children, nested elements, siblings
+Write & test each combinator one by one:
+css
+
+Highlight the difference in results — show which elements get styled & which don’t
+Quick tip: Common mistakes — mixing up space,  > ,  + ,  ~
+ 
+Summary & Conclusion — 4:15–5:00
+Recap:
+Space = all descendants 
+ >  = only direct children 
+ +  = one next sibling 
+ ~  = all following siblings 
+When to use: Keep code cleaner; avoid extra classes; style based on structure
+Final takeaway: Master combinators = precise control without cluttering your HTML
+
+Closing
