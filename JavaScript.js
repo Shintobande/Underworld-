@@ -1,5 +1,5 @@
 const myObject = {
-    "name": "john doe",
+    "name": "Shinto rimuru",
     "age": 25,
     "isEmployed":true,
     "hobbies":["reading", "Cooking", "Dancing" ]
