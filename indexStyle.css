@@ -1,0 +1,35 @@
+h1{
+    text-align: center;
+    color:crimson
+}  
+
+.draggbleContainer{
+    border:1px sandybrown;
+    margin-bottom:100px;
+    display:flex;
+    flex-direction: row;
+} 
+
+.box{
+    background-color: aqua;
+    align-items: center;
+    justify-content: center;
+    heigth: 30px;
+    width:  120px;
+    margin-right:5px;
+
+}
+.draggbleContainer{
+    border:1px  solid red;
+    display:flex;
+    flex-direction: row;
+}
+
+.droppable{
+        background-color: antiquewhite;
+    align-items: center;
+    justify-content: center;
+    heigth: 40px;
+    width:  150px;
+    margin-right:5px;
+}
