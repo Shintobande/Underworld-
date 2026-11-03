@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src=
+"https://code.jquery.com/jquery-1.10.2.js">
+    </script>
+  
+    <style>
+        div {
+            margin: 15px 0 0 0;
+            width: 100px;
+            position: absolute;
+            height: 20px;
+            left: 20px;
+            top: 20px;
+            background-color: rgb(53, 66, 74);
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>GfG!</div>
+  
+    <!-- Click on this button to perform animation -->
+    <button>Click to start !</button>
+
+    <!-- jQuery code to demonstrate animation 
+        with the help of dequeue method -->
+    <script>
+        $("button").click(function () {
+            $("div")
+                .animate({ left: "+=500px" }, 1000)
+                .animate({ top: "0px" }, 1000)
+                .queue(function () {
+                    $(this).toggleClass("rgb").dequeue();
+                })
+                .animate({ left: "50px", top: "150px" }, 1000);
+        });
+    </script>
+</body>
+
+</html>
