@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to bottom right, #edf6ff, #cfe4ff);
+            min-height: 100vh;
+            color: #e25b01d7;
+            overflow: hidden;
+        }
+
+        .navbar {
+            min-height: 56px;
+            background-color: #00c9fc;
+            border-top: 5px solid #092f70;
+            border-bottom: 6px solid #082c68;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 8px 13px;
+            border-radius: 4px;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            background-color: #be042d;
+        }
+
+        .page {
+            display: none;
+            height: calc(100vh - 56px);
+            overflow-y: auto;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1068px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #0bc760;
+            font-size: 36px;
+        }
+
+        h2 {
+            color: #104b9e;
+        }
+
+        p {
+            color: #6b053d;
+            line-height: 1.7;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 35px;
+        }
+
+        .portfolio-button {
+            min-height: 62px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 12px 8px;
+            background-color: #e2f1ff;
+            border: 3px double #56da0a;
+            border-radius: 9px;
+            color: #0645a1;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .portfolio-button:hover {
+            background-color: #c5e2ff;
+            transform: translateY(-2px);
+        }
+
+        /* King Von Gallery Picture */
+        .gallery-picture {
+            width: 350px;
+            max-width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border: 4px solid #2878d5;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        /* SAMPLE CALCULATOR */
+        .sample-calculator-page {
+            background: #edf6ef;
+            font-family: Arial, sans-serif;
+            color: #174b2d;
+            padding: 30px 15px;
+            text-align: left;
+        }
+
+        .sample-calculator-page h1 {
+            text-align: center;
+            color: #176b3a;
+            margin-bottom: 25px;
+            font-size: 32px;
+        }
+
+        .student-info {
+            text-align: center;
+            color: #176b3a;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .calculator {
+            max-width: 470px;
+            margin: auto;
+            background: white;
+            border: 2px solid #287545;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(20, 80, 40, 0.12);
+        }
+
+        .calculator h2 {
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background: #176b3a;
+            color: white;
+            font-size: 22px;
+        }
+
+        .form-content {
+            padding: 22px;
+        }
+
+        .form-row {
+            margin-bottom: 20px;
+        }
+
+        .calculator label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #174b2d;
+        }
+
+        .calculator input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #82b694;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .calculator input:focus {
+            outline: 2px solid #b8dfc3;
+            border-color: #176b3a;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            padding: 18px;
+            background: #f2f8f3;
+            border-top: 1px solid #d4e7d8;
+        }
+
+        .calculator button {
+            min-width: 110px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .compute {
+            background: #218448;
+            color: white;
+        }
+
+        .compute:hover {
+            background: #176b3a;
+        }
+
+        .reset {
+            background: #dcebe0;
+            color: #174b2d;
+        }
+
+        .reset:hover {
+            background: #c6dfcd;
+        }
+
+        #result {
+            padding: 0 20px 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+            color: #174b2d;
+        }
+
+        .calculator-back {
+            display: block;
+            width: fit-content;
+            margin: 24px auto 0;
+            color: #176b3a;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .calculator-back:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 760px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .navbar ul {
+                gap: 2px;
+            }
+
+            .navbar a {
+                padding: 8px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#" class="active" onclick="showPage('home', this); return false;">Home</a></li>
+            <li><a href="#" onclick="showPage('about', this); return false;">About</a></li>
+            <li><a href="#" onclick="showPage('gallery', this); return false;">Gallery</a></li>
+            <li><a href="#" onclick="showPage('portfolio', this); return false;">Portfolio</a></li>
+            <li><a href="#" onclick="showPage('contact', this); return false;">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <!-- HOME -->
+        <section id="home" class="page active">
+            <div class="container">
+                <h1>Jan Laurent A. Bande</h1>
+                <p>12-Cooper</p>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="page">
+            <div class="container">
+                <h1>About Me</h1>
+                <p>Nothing, I'm just a lazy person who likes playing games and livestreaming.</p>
+            </div>
+        </section>
+
+        <!-- GALLERY -->
+        <section id="gallery" class="page">
+            <div class="container">
+                <h1>My Gallery</h1>
+                <p>Welcome to my photo gallery.</p>
+
+                <img src="images/king-von.jpg"
+                     alt="King Von"
+                     class="gallery-picture"
+                     onerror="this.src='https://via.placeholder.com/350?text=King+Von';">
+            </div>
+        </section>
+
+        <!-- PORTFOLIO -->
+        <section id="portfolio" class="page">
+            <div class="container">
+                <h1>My Portfolio</h1>
+
+                <div class="portfolio-grid">
+                    <a href="calculator.html" class="portfolio-button">Discount Calculator</a>
+                    <a href="FormElements.html" class="portfolio-button">Form Elements</a>
+                    <a href="schedule.html" class="portfolio-button">Class Schedule</a>
+                    <a href="styledSchedule.html" class="portfolio-button">Class Schedule Style</a>
+                    <a href="Login.html" class="portfolio-button">Login Logic</a>
+                    <a href="Logic.html" class="portfolio-button">Login</a>
+                    <a href="SaveGrades.html" class="portfolio-button">Grades</a>
+                    <a href="Canvas.html" class="portfolio-button">Canvas Tree</a>
+                    <a href="Dequeue.html" class="portfolio-button">Dequeue</a>
+                    <a href="drags.html" class="portfolio-button">Drag and Drop</a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="page">
+            <div class="container">
+                <h1>Contact Me</h1>
+                <p>Watching Anime,cartoons, likes to play video games.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function showPage(pageId, element) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Show target page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Update active class on navbar links
+            const navLinks = document.querySelectorAll('.navbar a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            if (element) {
+                element.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
