@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merry Christmas Snowman</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: linear-gradient(#092b50 0%, #18598a 58%, #d7eff7 58%, #effcff 100%);
+    }
+
+    .card {
+      position: relative;
+      width: min(92vw, 700px);
+      height: min(92vh, 600px);
+      overflow: hidden;
+      border: 12px solid rgba(37, 1, 1, 0.9);
+      border-radius: 28px;
+      box-shadow: 0 20px 45px rgba(0, 35, 70, 0.35);
+    }
+
+    h1 {
+      position: absolute;
+      z-index: 20;
+      top: 34px;
+      width: 100%;
+      margin: 0;
+      color: #000000;
+      text-align: center;
+      font-size: clamp(38px, 8vw, 72px);
+      line-height: 1;
+      letter-spacing: 2px;
+      text-shadow: 0 4px 12px rgba(0, 35, 70, 0.5);
+    }
+
+    .snowflake {
+      position: absolute;
+      z-index: 3;
+      color: #fff;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      text-shadow: 0 2px 5px rgba(0, 65, 105, 0.25);
+    }
+
+    .snowman {
+      position: absolute;
+      z-index: 10;
+      left: 50%;
+      bottom: 22px;
+      width: 300px;
+      height: 430px;
+      transform: translateX(-50%);
+    }
+
+    .body,
+    .head {
+      position: absolute;
+      left: 50%;
+      border: 4px solid #9ab8c8;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 28%, #ffffff 0 55%, #dceaf0 100%);
+      transform: translateX(-50%);
+    }
+
+    .body {
+      bottom: 0;
+      width: 240px;
+      height: 240px;
+    }
+
+    .middle {
+      bottom: 160px;
+      width: 190px;
+      height: 190px;
+    }
+
+    .head {
+      bottom: 300px;
+      width: 150px;
+      height: 150px;
+    }
+
+    .eye {
+      position: absolute;
+      top: 48px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #17212a;
+    }
+
+    .eye.left { left: 42px; }
+    .eye.right { right: 42px; }
+
+    .nose {
+      position: absolute;
+      top: 68px;
+      left: 70px;
+      width: 70px;
+      height: 22px;
+      border-radius: 20% 100% 100% 20%;
+      background: #ff7b32;
+      clip-path: polygon(0 20%, 100% 50%, 0 100%);
+    }
+
+    .smile {
+      position: absolute;
+      left: 54px;
+      top: 94px;
+      width: 50px;
+      height: 24px;
+      border-bottom: 5px dotted #17212a;
+      border-radius: 50%;
+    }
+
+    .hat {
+      position: absolute;
+      z-index: 3;
+      bottom: 420px;
+      left: 50%;
+      width: 155px;
+      height: 100px;
+      transform: translateX(-50%) rotate(-3deg);
+    }
+
+    .hat-crown {
+      position: absolute;
+      bottom: 18px;
+      left: 32px;
+      width: 92px;
+      height: 82px;
+      border-radius: 8px 8px 3px 3px;
+      background: #1a1a22;
+    }
+
+    .hat-crown::after {
+      content: "";
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      height: 16px;
+      background: #d83b45;
+    }
+
+    .hat-brim {
+      position: absolute;
+      bottom: 0;
+      left: 5px;
+      width: 145px;
+      height: 20px;
+      border-radius: 50%;
+      background: #111118;
+    }
+
+    .scarf {
+      position: absolute;
+      z-index: 4;
+      bottom: 292px;
+      left: 50%;
+      width: 172px;
+      height: 34px;
+      border-radius: 12px;
+      background: repeating-linear-gradient(90deg, #bd182b 0 24px, #fff 24px 32px);
+      transform: translateX(-50%) rotate(2deg);
+    }
+
+    .scarf-tail {
+      position: absolute;
+      z-index: 3;
+      right: 20px;
+      bottom: 210px;
+      width: 52px;
+      height: 100px;
+      border-radius: 5px;
+      background: repeating-linear-gradient(90deg, #bd182b 0 24px, #fff 24px 32px);
+      transform: rotate(-8deg);
+    }
+
+    .button {
+      position: absolute;
+      left: 50%;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #263238;
+      transform: translateX(-50%);
+    }
+
+    .button.one { bottom: 195px; }
+    .button.two { bottom: 155px; }
+    .button.three { bottom: 115px; }
+
+    .arm {
+      position: absolute;
+      z-index: 0;
+      top: 205px;
+      width: 110px;
+      height: 8px;
+      border-radius: 8px;
+      background: #795a3b;
+    }
+
+    .arm.left {
+      left: -15px;
+      transform: rotate(-24deg);
+    }
+
+    .arm.right {
+      right: -15px;
+      transform: rotate(24deg);
+    }
+
+    .ground-snow {
+      position: absolute;
+      z-index: 5;
+      bottom: -35px;
+      left: -5%;
+      width: 110%;
+      height: 150px;
+      border-radius: 50% 50% 0 0;
+      background: #fff;
+      box-shadow: inset 0 12px 18px #dbeef5;
+    }
+
+    @media (max-height: 620px) {
+      .snowman {
+        transform: translateX(-50%) scale(0.8);
+        transform-origin: bottom center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" id="card" aria-label="A Merry Christmas greeting card">
+    <h1>Merry Christmas</h1>
+    <div class="ground-snow"></div>
+
+    <div class="snowman" role="img" aria-label="A cheerful snowman">
+      <div class="hat">
+        <div class="hat-crown"></div>
+        <div class="hat-brim"></div>
+      </div>
+
+      <div class="body"></div>
+      <div class="body middle"></div>
+      <div class="head">
+        <span class="eye left"></span>
+        <span class="eye right"></span>
+        <span class="nose"></span>
+        <span class="smile"></span>
+      </div>
+
+      <div class="scarf"></div>
+      <div class="scarf-tail"></div>
+      <span class="arm left"></span>
+      <span class="arm right"></span>
+      <span class="button one"></span>
+      <span class="button two"></span>
+      <span class="button three"></span>
+    </div>
+  </main>
+
+  <script>
+    const card = document.getElementById("card");
+
+    function createRandomSnow() {
+      for (let i = 0; i < 45; i++) {
+        const flake = document.createElement("span");
+        const size = Math.random() * 13 + 8;
+
+        flake.className = "snowflake";
+        flake.textContent = "❄";
+        flake.style.left = `${Math.random() * 96 + 2}%`;
+        flake.style.top = `${Math.random() * 72 + 2}%`;
+        flake.style.fontSize = `${size}px`;
+        flake.style.opacity = `${Math.random() * 0.5 + 0.5}`;
+        flake.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+        card.appendChild(flake);
+      }
+    }
+
+    createRandomSnow();
+  </script>
+</body>
+</html>
